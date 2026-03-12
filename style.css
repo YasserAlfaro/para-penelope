@@ -79,3 +79,41 @@ h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #b56576; }
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* --- Efecto de Corazones Cayendo --- */
+
+/* Contenedor invisible para que no estorbe al hacer clic */
+.heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Importante: permite hacer clic a través de ellos */
+    z-index: 9999; /* Siempre encima de todo */
+    overflow: hidden;
+}
+
+.heart-emoji {
+    position: absolute;
+    top: -50px; /* Empieza un poco arriba de la pantalla */
+    font-size: 20px; /* Tamaño base del corazón */
+    color: #ff6b6b; /* Color rojo/rosa suave */
+    user-select: none;
+    opacity: 0.8;
+    animation: fall linear forwards; /* Animación definida abajo */
+}
+
+/* Definición de la animación de caída y desvanecimiento */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        /* Cae más allá del fondo de la pantalla y rota aleatoriamente */
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0; /* Se desvanece al final */
+    }
+}
